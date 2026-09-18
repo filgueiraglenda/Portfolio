@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Glenda Filgueira</title>
+    <style>
+        :root {
+            --bg-color: #0a0f1d;
+            --card-bg: #11192e;
+            --accent-color: #00f2fe;
+            --accent-green: #00ff88;
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--accent-green);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .interactive-box {
+            background: #060a12;
+            border: 1px dashed var(--accent-green);
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .btn-demo {
+            display: inline-block;
+            background: var(--accent-green);
+            color: #000;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-demo:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Glenda Emanuele da Silva Filgueira</h1>
+            <p class="subtitle">Desenvolvimento de Software | Cibersegurança & Redes | ESG</p>
+            <div class="social-links">
+                <a href="https://github.com/filgueiraglenda" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/glendafilgueira" target="_blank">LinkedIn</a>
+                <a href="mailto:Filgueiraglenda@gmail.com">E-mail</a>
+            </div>
+        </header>
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Estudante de Tecnologia focada em Desenvolvimento de Software, Cibersegurança e Infraestrutura de Redes. Apaixonada por criar soluções práticas, automatizar processos com Python, simular arquiteturas de rede seguras e aplicar boas práticas de versionamento com Git/GitHub.</p>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Desenvolvimento</h3>
+                    <p>Python, JavaScript, HTML5, CSS3, SQL, Lógica de Programação & Algoritmos.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Redes & Cibersegurança</h3>
+                    <p>Cisco Packet Tracer, Fundamentos de Cibersegurança, Linux, Protocolos TCP/IP, Firewall & VLANs.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Ferramentas</h3>
+                    <p>Git, GitHub, Google Workspace, VS Code, Análise de Logs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos-seguranca">
+            <h2>Projetos de Cibersegurança & Redes (Cisco Packet Tracer)</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>1. Infraestrutura Corporativa Segura com VLANs & Firewall</h3>
+                        <p>Simulação em Cisco Packet Tracer de uma rede corporativa segmentada por VLANs (Financeiro, TI e Visitantes) com ACLs (Listas de Controle de Acesso) restringindo o tráfego não autorizado.</p>
+                        <div class="tags">
+                            <span class="tag">Cisco Packet Tracer</span>
+                            <span class="tag">VLAN</span>
+                            <span class="tag">ACL Firewall</span>
+                            <span class="tag">Segurança de Rede</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Simulação de Regra de ACL:</strong><br>
+                        <code>deny tcp 192.168.30.0 0.0.0.255 host 192.168.10.5 eq 80</code><br>
+                        <small>_Impede que a VLAN Visitantes acesse o Servidor Web Interno_</small>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>2. Configuração de Servidor DHCP & Segurança de Portas (Port Security)</h3>
+                        <p>Implementação de atribuição dinâmica de IPs com DHCP em roteadores Cisco e proteção em switches contra ataques de MAC Spoofing usando Port Security (Sticky MAC).</p>
+                        <div class="tags">
+                            <span class="tag">Cisco Packet Tracer</span>
+                            <span class="tag">Port Security</span>
+                            <span class="tag">DHCP</span>
+                            <span class="tag">Switching</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Status de Segurança da Porta:</strong><br>
+                        <span style="color: var(--accent-green);">● Port FastEthernet 0/1: SECURE (MAC Fixado)</span><br>
+                        <small>Dispositivos desconhecidos são automaticamente bloqueados.</small>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>3. Roteamento Inter-VLAN & Protocolo SSH Seguro</h3>
+                        <p>Configuração de roteamento de pacotes entre sub-redes isoladas (Router-on-a-Stick) e desativação do protocolo Telnet inseguro, substituindo-o por acesso administrativo criptografado via SSH.</p>
+                        <div class="tags">
+                            <span class="tag">SSH</span>
+                            <span class="tag">Router-on-a-Stick</span>
+                            <span class="tag">Criptografia</span>
+                            <span class="tag">Redes</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Comando de Teste SSH:</strong><br>
+                        <code>ssh -l admin 192.168.1.1</code><br>
+                        <small>_Conexão remota segura criptografada ativada_</small>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>4. Monitoramento de Logs & Prevenção contra Rogue DHCP</h3>
+                        <p>Implementação de DHCP Snooping para mitigar ataques de servidores DHCP falsos na rede local e envio centralizado de mensagens de evento para um servidor Syslog dedicado.</p>
+                        <div class="tags">
+                            <span class="tag">DHCP Snooping</span>
+                            <span class="tag">Syslog</span>
+                            <span class="tag">Defensa em Profundidade</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Log de Evento detectado:</strong><br>
+                        <span style="color: #ff5555;">[ALERT] Untrusted DHCP Offer blocked on Port Fa0/4</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos-python">
+            <h2>Projetos em Python (Interativos)</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>1. Gerador e Validador de Senhas Fortes</h3>
+                        <p>Script Python automatizado que cria senhas aleatórias de alta complexidade seguindo os padrões da NVD/NIST e verifica a força com base na entropia do texto.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Criptografia</span>
+                            <span class="tag">Segurança</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Testar Gerador de Senha:</strong><br>
+                        <input type="text" id="pass-output" value="aK9#mX2$vP" readonly style="background:#111; color:var(--accent-green); border:1px solid #333; padding:4px; margin-top:5px; width:70%;">
+                        <button class="btn-demo" onclick="generatePassword()">Gerar Nova</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>2. Analisador de Logs de Acesso & Tentativas de Brute Force</h3>
+                        <p>Ferramenta em Python que lê arquivos de log de servidor, identifica requisições HTTP incomuns e alertas sobre possíveis tentativas de ataques por força bruta (Múltiplos status 401/403).</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Análise de Logs</span>
+                            <span class="tag">Automação</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Simulação de Análise:</strong><br>
+                        <button class="btn-demo" onclick="analyzeLogs()">Executar Análise de Log</button>
+                        <div id="log-result" style="margin-top:8px; color:var(--text-muted); font-size:0.8rem;">Aguardando execução...</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>3. Verificador de Status de Serviços & Port Scanner Básico</h3>
+                        <p>Script leve em Python (utilizando a biblioteca <code>socket</code>) que verifica a disponibilidade de portas essenciais (HTTP, HTTPS, SSH, FTP) em um endereço IP ou domínio.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Sockets</span>
+                            <span class="tag">Redes</span>
+                        </div>
+                    </div>
+                    <div class="interactive-box">
+                        <strong>Verificador Rápido:</strong><br>
+                        <button class="btn-demo" onclick="checkPort()">Verificar Porta 80 (HTTP)</button>
+                        <div id="port-result" style="margin-top:8px; color:var(--text-muted); font-size:0.8rem;">Aguardando verificação...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Glenda Emanuele da Silva Filgueira. Criado para exibição e hospedagem no GitHub Pages.</p>
+        </footer>
+    </div>
+
+    <script>
+        function generatePassword() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+            let pass = "";
+            for (let i = 0; i < 12; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('pass-output').value = pass;
+        }
+
+        function analyzeLogs() {
+            const res = document.getElementById('log-result');
+            res.innerHTML = "<span style='color:#ffaa00;'>[PROCESSANDO] Lendo log.txt...</span>";
+            setTimeout(() => {
+                res.innerHTML = "<span style='color:#00ff88;'>[SUCESSO] 1.420 linhas lidas. 3 IPs bloqueados por suspeita de Brute Force.</span>";
+            }, 1000);
+        }
+
+        function checkPort() {
+            const res = document.getElementById('port-result');
+            res.innerHTML = "<span style='color:#00f2fe;'>[TESTANDO] Conectando a 127.0.0.1:80...</span>";
+            setTimeout(() => {
+                res.innerHTML = "<span style='color:#00ff88;'>[ABERTA] Porta 80 (HTTP) respondendo normalmente (200 OK).</span>";
+            }, 800);
+        }
+    </script>
+</body>
+</html>

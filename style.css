@@ -1,0 +1,126 @@
+/* CONFIGURAÇÕES GERAIS - TEMA MATRIX / CYBERPUNK */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    padding: 30px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* CABEÇALHO */
+header {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #00ff66;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #00ff66;
+    text-shadow: 0 0 12px rgba(0, 255, 102, 0.7);
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #00f0ff;
+    font-size: 1rem;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+    margin-bottom: 15px;
+}
+
+.links a {
+    color: #00f0ff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #00ff66;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+/* TÍTULOS DE SEÇÃO */
+h2 {
+    color: #00ff66;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
+}
+
+/* CARDS DE PROJETOS */
+.card {
+    background-color: #080c08;
+    border: 1px solid #00ff66;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    border-color: #00f0ff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+h3 {
+    color: #00f0ff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.desc {
+    color: #a0c0a0;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+/* TERMINAL SIMULADO */
+.terminal-box {
+    background-color: #000000;
+    border-left: 3px solid #00f0ff;
+    padding: 10px 15px;
+    font-family: monospace;
+    color: #00ff66;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* BOTÕES INTERATIVOS */
+button {
+    background-color: #050505;
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    padding: 8px 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #00ff66;
+    color: #050505;
+    box-shadow: 0 0 15px #00ff66;
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #446644;
+    font-size: 0.85rem;
+}

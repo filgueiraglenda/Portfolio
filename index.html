@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glenda Filgueira | Portfolio</title>
+  <title>Glenda Filgueira | Girl Tech Portfolio</title>
   <!-- Fonte Monospaçada Tech -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,15 +204,37 @@
       margin-bottom: 10px;
     }
 
+    /* Console e Botões de Ação */
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--cyan-glow);
+      color: var(--cyan-glow);
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      margin-top: 15px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .action-btn:hover {
+      background: var(--cyan-glow);
+      color: #000;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
     .code-snippet {
       background: #05010a;
       border-left: 3px solid var(--pink-neon);
-      padding: 10px;
+      padding: 15px;
       margin-top: 15px;
       font-size: 0.85rem;
       color: var(--cyan-glow);
       border-radius: 0 8px 8px 0;
-      overflow-x: auto;
+      min-height: 50px;
+      white-space: pre-line;
     }
 
     footer {
@@ -303,56 +325,44 @@
           </div>
           <div class="code-snippet">Port FastEthernet 0/1: SECURE (MAC Fixado)</div>
         </div>
-
-        <div class="project-card">
-          <h3>3. Roteamento Inter-VLAN & SSH Seguro</h3>
-          <p>Configuração de roteamento de pacotes entre sub-redes isoladas (Router-on-a-Stick) e acesso administrativo criptografado via SSH.</p>
-          <div class="tags">
-            <span class="tag">SSH</span><span class="tag">Router-on-a-Stick</span><span class="tag">Criptografia</span>
-          </div>
-          <div class="code-snippet">ssh -l admin 192.168.1.1</div>
-        </div>
-
-        <div class="project-card">
-          <h3>4. Monitoramento de Logs & DHCP Snooping</h3>
-          <p>Implementação de DHCP Snooping para mitigar ataques de servidores DHCP falsos na rede local e envio de eventos para servidor Syslog dedicado.</p>
-          <div class="tags">
-            <span class="tag">DHCP Snooping</span><span class="tag">Syslog</span><span class="tag">Defesa em Profundidade</span>
-          </div>
-          <div class="code-snippet">[ALERT] Untrusted DHCP Offer blocked on Port Fa0/4</div>
-        </div>
       </div>
     </section>
 
+    <!-- Nova Seção Interativa -->
     <section>
-      <h2>&lt;Projetos Python /&gt;</h2>
+      <h2>&lt;Projetos Python Interativos /&gt;</h2>
       <div class="projects-grid">
+        
         <div class="project-card">
           <h3>1. Gerador e Validador de Senhas Fortes</h3>
-          <p>Script Python automatizado que cria senhas aleatórias de alta complexidade seguindo os padrões NVD/NIST e verifica a entropia do texto.</p>
+          <p>Script automatizado que cria senhas aleatórias de alta complexidade seguindo os padrões NVD/NIST.</p>
           <div class="tags">
             <span class="tag">Python</span><span class="tag">Criptografia</span><span class="tag">Segurança</span>
           </div>
-          <div class="code-snippet">___aK9#mX2$vP___</div>
+          <button class="action-btn" onclick="gerarSenha()">Executar Script [>_]</button>
+          <div class="code-snippet" id="out-senha">Aguardando execução...</div>
         </div>
 
         <div class="project-card">
           <h3>2. Analisador de Logs de Acesso & Brute Force</h3>
-          <p>Ferramenta em Python que analisa logs de servidor, identifica requisições incomuns e emite alertas sobre possíveis tentativas de brute force.</p>
+          <p>Ferramenta que analisa logs de servidor, identifica requisições incomuns e emite alertas sobre tentativas de invasão.</p>
           <div class="tags">
             <span class="tag">Python</span><span class="tag">Análise de Logs</span><span class="tag">Automação</span>
           </div>
-          <div class="code-snippet">[SUCESSO] 1.420 linhas lidas. 3 IPs bloqueados.</div>
+          <button class="action-btn" onclick="analisarLogs()">Executar Script [>_]</button>
+          <div class="code-snippet" id="out-logs">Aguardando execução...</div>
         </div>
 
         <div class="project-card">
           <h3>3. Verificador de Status & Port Scanner</h3>
-          <p>Script leve em Python (usando socket) para verificar a disponibilidade de portas essenciais (HTTP, HTTPS, SSH, FTP) em conexões IP/domínio.</p>
+          <p>Script leve (usando socket) para verificar a disponibilidade de portas essenciais (HTTP, HTTPS, SSH, FTP).</p>
           <div class="tags">
             <span class="tag">Python</span><span class="tag">Sockets</span><span class="tag">Redes</span>
           </div>
-          <div class="code-snippet">Verificando Porta 80 (HTTP)... [ONLINE]</div>
+          <button class="action-btn" onclick="escanearPortas()">Executar Script [>_]</button>
+          <div class="code-snippet" id="out-ports">Aguardando execução...</div>
         </div>
+
       </div>
     </section>
 
@@ -361,8 +371,9 @@
     </footer>
   </div>
 
-  <!-- Efeito Matrix de Código Binário -->
+  <!-- Scripts Interativos e Efeito Matrix -->
   <script>
+    // --- Efeito Matrix de Código Binário ---
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -382,7 +393,7 @@
       ctx.fillStyle = 'rgba(13, 2, 26, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#ff2a8d'; // Cor dos números binários caindo (Rosa Neon / Cyberpunk)
+      ctx.fillStyle = '#ff2a8d'; // Cor dos números (Rosa Neon / Cyberpunk)
       ctx.font = fontSize + 'px "Fira Code", monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -395,8 +406,51 @@
         drops[i]++;
       }
     }
-
     setInterval(drawMatrix, 33);
+
+    // --- Interações dos Scripts Python ---
+    
+    function gerarSenha() {
+      const consoleOut = document.getElementById('out-senha');
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*_-+=";
+      let senha = "";
+      for (let i = 0; i < 16; i++) {
+        senha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      consoleOut.style.color = "#00f0ff";
+      consoleOut.innerText = `[+] Gerando senha segura de 16 caracteres...\n\n[RESULTADO]: ${senha}\n[ENTROPIA]: ALTA`;
+    }
+
+    function analisarLogs() {
+      const consoleOut = document.getElementById('out-logs');
+      consoleOut.style.color = "#00f0ff";
+      consoleOut.innerText = "[*] Lendo access_log.txt...\n[*] Analisando padrões de requisição...";
+      
+      setTimeout(() => {
+        consoleOut.style.color = "#ff2a8d"; // Muda a cor para dar ênfase no alerta
+        consoleOut.innerText += "\n\n[ALERTA] Múltiplas falhas de login detectadas.\n[IP SUSPEITO] 192.168.1.105 (45 tentativas em 2s)\n[AÇÃO] Adicionando regra de bloqueio ao firewall...\n[SUCESSO] IP Bloqueado temporariamente.";
+      }, 1200);
+    }
+
+    function escanearPortas() {
+      const consoleOut = document.getElementById('out-ports');
+      consoleOut.style.color = "#00f0ff";
+      consoleOut.innerText = "[*] Iniciando Port Scan no alvo: 127.0.0.1...\n";
+      
+      setTimeout(() => {
+        consoleOut.innerText += "\n[*] Verificando Porta 80 (HTTP)...... [ONLINE]";
+      }, 600);
+      setTimeout(() => {
+        consoleOut.innerText += "\n[*] Verificando Porta 443 (HTTPS)..... [ONLINE]";
+      }, 1200);
+      setTimeout(() => {
+        consoleOut.innerText += "\n[*] Verificando Porta 22 (SSH)........ [FILTERED]";
+      }, 1800);
+      setTimeout(() => {
+        consoleOut.style.color = "#b527cf";
+        consoleOut.innerText += "\n\n[INFO] Scan finalizado.";
+      }, 2400);
+    }
   </script>
 </body>
 </html>

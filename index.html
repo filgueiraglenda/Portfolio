@@ -1,210 +1,402 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | Glenda Filgueira</title>
-    <link rel="stylesheet" href="style.css">
-    style.css
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glenda Filgueira | Girl Tech Portfolio</title>
+  <!-- Fonte Monospaçada Tech -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #0d021a;
+      --card-bg: rgba(25, 10, 40, 0.75);
+      --pink-neon: #ff2a8d;
+      --purple-neon: #b527cf;
+      --purple-light: #e0aaff;
+      --cyan-glow: #00f0ff;
+      --text-color: #f3e8ff;
+      --border-color: rgba(255, 42, 141, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 50px;
+    }
+
+    /* Canvas da chuva binária */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      opacity: 0.25;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Cabeçalho */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(255, 42, 141, 0.2);
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: var(--pink-neon);
+      text-shadow: 0 0 10px var(--pink-neon), 0 0 20px var(--purple-neon);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--purple-light);
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--pink-neon);
+      border-radius: 8px;
+      background: rgba(255, 42, 141, 0.1);
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .social-links a:hover {
+      background: var(--pink-neon);
+      color: #000;
+      box-shadow: 0 0 15px var(--pink-neon);
+      transform: translateY(-2px);
+    }
+
+    /* Seções */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(181, 39, 207, 0.15);
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--purple-light);
+      border-bottom: 2px solid var(--pink-neon);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      display: inline-block;
+      text-shadow: 0 0 8px var(--purple-neon);
+    }
+
+    p {
+      line-height: 1.7;
+      color: #d8c2ff;
+    }
+
+    /* Habilidades */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: rgba(13, 2, 26, 0.6);
+      border: 1px solid rgba(181, 39, 207, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      transition: border-color 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--pink-neon);
+      box-shadow: 0 0 10px rgba(255, 42, 141, 0.3);
+    }
+
+    .skill-card h3 {
+      color: var(--pink-neon);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: rgba(181, 39, 207, 0.2);
+      border: 1px solid var(--purple-neon);
+      color: var(--purple-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    /* Cards de Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      background: rgba(13, 2, 26, 0.7);
+      border: 1px solid rgba(255, 42, 141, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--pink-neon);
+      box-shadow: 0 0 20px rgba(255, 42, 141, 0.3);
+    }
+
+    .project-card h3 {
+      color: var(--purple-light);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .code-snippet {
+      background: #05010a;
+      border-left: 3px solid var(--pink-neon);
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: var(--cyan-glow);
+      border-radius: 0 8px 8px 0;
+      overflow-x: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--purple-light);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Glenda Emanuele da Silva Filgueira</h1>
-            <p class="subtitle">Desenvolvimento de Software | Cibersegurança & Redes | ESG</p>
-            <div class="social-links">
-                <a href="https://github.com/filgueiraglenda" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/glendafilgueira" target="_blank">LinkedIn</a>
-                <a href="mailto:Filgueiraglenda@gmail.com">E-mail</a>
-            </div>
-        </header>
 
-        <section id="sobre">
-            <h2>Sobre Mim</h2>
-            <p>Estudante de Tecnologia focada em Desenvolvimento de Software, Cibersegurança e Infraestrutura de Redes. Apaixonada por criar soluções práticas, automatizar processos com Python, simular arquiteturas de rede seguras e aplicar boas práticas de versionamento com Git/GitHub.</p>
-        </section>
+  <!-- Canvas para animação do código binário -->
+  <canvas id="matrix-canvas"></canvas>
 
-        <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Desenvolvimento</h3>
-                    <p>Python, JavaScript, HTML5, CSS3, SQL, Lógica de Programação & Algoritmos.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Redes & Cibersegurança</h3>
-                    <p>Cisco Packet Tracer, Fundamentos de Cibersegurança, Linux, Protocolos TCP/IP, Firewall & VLANs.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Ferramentas</h3>
-                    <p>Git, GitHub, Google Workspace, VS Code, Análise de Logs.</p>
-                </div>
-            </div>
-        </section>
+  <div class="container">
+    <header>
+      <h1>Glenda Filgueira</h1>
+      <div class="subtitle">Desenvolvimento de Software | Cibersegurança & Redes | ESG</div>
+      <div class="social-links">
+        <a href="https://github.com/filgueiraglenda" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/glenda-filgueira/" target="_blank">LinkedIn</a>
+        <a href="mailto:contato@exemplo.com">E-mail</a>
+      </div>
+    </header>
 
-        <section id="projetos-seguranca">
-            <h2>Projetos de Cibersegurança & Redes (Cisco Packet Tracer)</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div>
-                        <h3>1. Infraestrutura Corporativa Segura com VLANs & Firewall</h3>
-                        <p>Simulação em Cisco Packet Tracer de uma rede corporativa segmentada por VLANs (Financeiro, TI e Visitantes) com ACLs (Listas de Controle de Acesso) restringindo o tráfego não autorizado.</p>
-                        <div class="tags">
-                            <span class="tag">Cisco Packet Tracer</span>
-                            <span class="tag">VLAN</span>
-                            <span class="tag">ACL Firewall</span>
-                            <span class="tag">Segurança de Rede</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Simulação de Regra de ACL:</strong><br>
-                        <code>deny tcp 192.168.30.0 0.0.0.255 host 192.168.10.5 eq 80</code><br>
-                        <small>_Impede que a VLAN Visitantes acesse o Servidor Web Interno_</small>
-                    </div>
-                </div>
+    <section>
+      <h2>&lt;Sobre Mim /&gt;</h2>
+      <p>
+        Estudante de Tecnologia focada em Desenvolvimento de Software, Cibersegurança e Infraestrutura de Redes. Apaixonada por criar soluções práticas, automatizar processos com Python, simular arquiteturas de rede seguras e aplicar boas práticas de versionamento com Git/GitHub.
+      </p>
+    </section>
 
-                <div class="project-card">
-                    <div>
-                        <h3>2. Configuração de Servidor DHCP & Segurança de Portas (Port Security)</h3>
-                        <p>Implementação de atribuição dinâmica de IPs com DHCP em roteadores Cisco e proteção em switches contra ataques de MAC Spoofing usando Port Security (Sticky MAC).</p>
-                        <div class="tags">
-                            <span class="tag">Cisco Packet Tracer</span>
-                            <span class="tag">Port Security</span>
-                            <span class="tag">DHCP</span>
-                            <span class="tag">Switching</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Status de Segurança da Porta:</strong><br>
-                        <span style="color: var(--accent-green);">● Port FastEthernet 0/1: SECURE (MAC Fixado)</span><br>
-                        <small>Dispositivos desconhecidos são automaticamente bloqueados.</small>
-                    </div>
-                </div>
+    <section>
+      <h2>&lt;Habilidades Técnicas /&gt;</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Desenvolvimento</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Lógica & Algoritmos</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Redes & Cibersegurança</h3>
+          <div class="tags">
+            <span class="tag">Cisco Packet Tracer</span>
+            <span class="tag">Fundamentos Cibersegurança</span>
+            <span class="tag">Linux</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">Firewall & VLANs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Ferramentas</h3>
+          <div class="tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Google Workspace</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Análise de Logs</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="project-card">
-                    <div>
-                        <h3>3. Roteamento Inter-VLAN & Protocolo SSH Seguro</h3>
-                        <p>Configuração de roteamento de pacotes entre sub-redes isoladas (Router-on-a-Stick) e desativação do protocolo Telnet inseguro, substituindo-o por acesso administrativo criptografado via SSH.</p>
-                        <div class="tags">
-                            <span class="tag">SSH</span>
-                            <span class="tag">Router-on-a-Stick</span>
-                            <span class="tag">Criptografia</span>
-                            <span class="tag">Redes</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Comando de Teste SSH:</strong><br>
-                        <code>ssh -l admin 192.168.1.1</code><br>
-                        <small>_Conexão remota segura criptografada ativada_</small>
-                    </div>
-                </div>
+    <section>
+      <h2>&lt;Projetos Cibersegurança & Redes /&gt;</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>1. Infraestrutura Corporativa Segura com VLANs & Firewall</h3>
+          <p>Simulação em Cisco Packet Tracer de uma rede corporativa segmentada por VLANs (Financeiro, TI e Visitantes) com ACLs restringindo tráfego não autorizado.</p>
+          <div class="tags">
+            <span class="tag">Packet Tracer</span><span class="tag">VLAN</span><span class="tag">ACL</span><span class="tag">Firewall</span>
+          </div>
+          <div class="code-snippet">deny tcp 192.168.30.0 0.0.0.255 host 192.168.10.5 eq 80</div>
+        </div>
 
-                <div class="project-card">
-                    <div>
-                        <h3>4. Monitoramento de Logs & Prevenção contra Rogue DHCP</h3>
-                        <p>Implementação de DHCP Snooping para mitigar ataques de servidores DHCP falsos na rede local e envio centralizado de mensagens de evento para um servidor Syslog dedicado.</p>
-                        <div class="tags">
-                            <span class="tag">DHCP Snooping</span>
-                            <span class="tag">Syslog</span>
-                            <span class="tag">Defensa em Profundidade</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Log de Evento detectado:</strong><br>
-                        <span style="color: #ff5555;">[ALERT] Untrusted DHCP Offer blocked on Port Fa0/4</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="project-card">
+          <h3>2. Servidor DHCP & Port Security</h3>
+          <p>Implementação de atribuição dinâmica de IPs com DHCP em roteadores Cisco e proteção em switches contra ataques de MAC Spoofing usando Port Security (Sticky MAC).</p>
+          <div class="tags">
+            <span class="tag">Port Security</span><span class="tag">DHCP</span><span class="tag">Switching</span>
+          </div>
+          <div class="code-snippet">Port FastEthernet 0/1: SECURE (MAC Fixado)</div>
+        </div>
 
-        <section id="projetos-python">
-            <h2>Projetos em Python (Interativos)</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div>
-                        <h3>1. Gerador e Validador de Senhas Fortes</h3>
-                        <p>Script Python automatizado que cria senhas aleatórias de alta complexidade seguindo os padrões da NVD/NIST e verifica a força com base na entropia do texto.</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Criptografia</span>
-                            <span class="tag">Segurança</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Testar Gerador de Senha:</strong><br>
-                        <input type="text" id="pass-output" value="aK9#mX2$vP" readonly style="background:#111; color:var(--accent-green); border:1px solid #333; padding:4px; margin-top:5px; width:70%;">
-                        <button class="btn-demo" onclick="generatePassword()">Gerar Nova</button>
-                    </div>
-                </div>
+        <div class="project-card">
+          <h3>3. Roteamento Inter-VLAN & SSH Seguro</h3>
+          <p>Configuração de roteamento de pacotes entre sub-redes isoladas (Router-on-a-Stick) e acesso administrativo criptografado via SSH.</p>
+          <div class="tags">
+            <span class="tag">SSH</span><span class="tag">Router-on-a-Stick</span><span class="tag">Criptografia</span>
+          </div>
+          <div class="code-snippet">ssh -l admin 192.168.1.1</div>
+        </div>
 
-                <div class="project-card">
-                    <div>
-                        <h3>2. Analisador de Logs de Acesso & Tentativas de Brute Force</h3>
-                        <p>Ferramenta em Python que lê arquivos de log de servidor, identifica requisições HTTP incomuns e alertas sobre possíveis tentativas de ataques por força bruta (Múltiplos status 401/403).</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Análise de Logs</span>
-                            <span class="tag">Automação</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Simulação de Análise:</strong><br>
-                        <button class="btn-demo" onclick="analyzeLogs()">Executar Análise de Log</button>
-                        <div id="log-result" style="margin-top:8px; color:var(--text-muted); font-size:0.8rem;">Aguardando execução...</div>
-                    </div>
-                </div>
+        <div class="project-card">
+          <h3>4. Monitoramento de Logs & DHCP Snooping</h3>
+          <p>Implementação de DHCP Snooping para mitigar ataques de servidores DHCP falsos na rede local e envio de eventos para servidor Syslog dedicado.</p>
+          <div class="tags">
+            <span class="tag">DHCP Snooping</span><span class="tag">Syslog</span><span class="tag">Defesa em Profundidade</span>
+          </div>
+          <div class="code-snippet">[ALERT] Untrusted DHCP Offer blocked on Port Fa0/4</div>
+        </div>
+      </div>
+    </section>
 
-                <div class="project-card">
-                    <div>
-                        <h3>3. Verificador de Status de Serviços & Port Scanner Básico</h3>
-                        <p>Script leve em Python (utilizando a biblioteca <code>socket</code>) que verifica a disponibilidade de portas essenciais (HTTP, HTTPS, SSH, FTP) em um endereço IP ou domínio.</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Sockets</span>
-                            <span class="tag">Redes</span>
-                        </div>
-                    </div>
-                    <div class="interactive-box">
-                        <strong>Verificador Rápido:</strong><br>
-                        <button class="btn-demo" onclick="checkPort()">Verificar Porta 80 (HTTP)</button>
-                        <div id="port-result" style="margin-top:8px; color:var(--text-muted); font-size:0.8rem;">Aguardando verificação...</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section>
+      <h2>&lt;Projetos Python /&gt;</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>1. Gerador e Validador de Senhas Fortes</h3>
+          <p>Script Python automatizado que cria senhas aleatórias de alta complexidade seguindo os padrões NVD/NIST e verifica a entropia do texto.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Criptografia</span><span class="tag">Segurança</span>
+          </div>
+          <div class="code-snippet">___aK9#mX2$vP___</div>
+        </div>
 
-        <footer>
-            <p>&copy; 2026 Glenda Emanuele da Silva Filgueira. Criado para exibição e hospedagem no GitHub Pages.</p>
-        </footer>
-    </div>
+        <div class="project-card">
+          <h3>2. Analisador de Logs de Acesso & Brute Force</h3>
+          <p>Ferramenta em Python que analisa logs de servidor, identifica requisições incomuns e emite alertas sobre possíveis tentativas de brute force.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Análise de Logs</span><span class="tag">Automação</span>
+          </div>
+          <div class="code-snippet">[SUCESSO] 1.420 linhas lidas. 3 IPs bloqueados.</div>
+        </div>
 
-    <script>
-        function generatePassword() {
-            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-            let pass = "";
-            for (let i = 0; i < 12; i++) {
-                pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            document.getElementById('pass-output').value = pass;
+        <div class="project-card">
+          <h3>3. Verificador de Status & Port Scanner</h3>
+          <p>Script leve em Python (usando socket) para verificar a disponibilidade de portas essenciais (HTTP, HTTPS, SSH, FTP) em conexões IP/domínio.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Sockets</span><span class="tag">Redes</span>
+          </div>
+          <div class="code-snippet">Verificando Porta 80 (HTTP)... [ONLINE]</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Glenda Emanuele da Silva Filgueira. Criado para exibição e hospedagem no GitHub Pages.
+    </footer>
+  </div>
+
+  <!-- Efeito Matrix de Código Binário -->
+  <script>
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const binary = '01';
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(13, 2, 26, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#ff2a8d'; // Cor dos números binários caindo (Rosa Neon / Cyberpunk)
+      ctx.font = fontSize + 'px "Fira Code", monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = binary.charAt(Math.floor(Math.random() * binary.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
         }
+        drops[i]++;
+      }
+    }
 
-        function analyzeLogs() {
-            const res = document.getElementById('log-result');
-            res.innerHTML = "<span style='color:#ffaa00;'>[PROCESSANDO] Lendo log.txt...</span>";
-            setTimeout(() => {
-                res.innerHTML = "<span style='color:#00ff88;'>[SUCESSO] 1.420 linhas lidas. 3 IPs bloqueados por suspeita de Brute Force.</span>";
-            }, 1000);
-        }
-
-        function checkPort() {
-            const res = document.getElementById('port-result');
-            res.innerHTML = "<span style='color:#00f2fe;'>[TESTANDO] Conectando a 127.0.0.1:80...</span>";
-            setTimeout(() => {
-                res.innerHTML = "<span style='color:#00ff88;'>[ABERTA] Porta 80 (HTTP) respondendo normalmente (200 OK).</span>";
-            }, 800);
-        }
-    </script>
+    setInterval(drawMatrix, 33);
+  </script>
 </body>
 </html>
